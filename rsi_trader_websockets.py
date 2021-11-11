@@ -15,23 +15,21 @@ import time
 import testnet_key # testnet_key.py containing:
 # TESTKEY = 'xxx'
 # TESTSECRET = 'xxx'
-#import config <- ähnliches File mit meinem richtigen api key u secret.
+#import config <- same kind of file with actual API key and secret - not needed while operating on testnet
 # how to get testnet api key:
 # https://academy.binance.com/en/articles/binance-api-series-pt-1-spot-trading-with-postman
 
-
-#part time larry
-#https://www.youtube.com/watch?v=GdlFhF6gjKo&list=PLvzuUVysUFOuB1kJQ3S2G-nB7_nHhD7Ay&index=11
+#sources
 #wss://stream.binance.com:9443
 #wss://stream>
+#https://www.youtube.com/watch?v=GdlFhF6gjKo&list=PLvzuUVysUFOuB1kJQ3S2G-nB7_nHhD7Ay&index=11
+
 
 TRADE_SYMBOL = 'BNBBUSD'
 SOCKET = "wss://stream.binance.com:9443/ws/{}@kline_1m".format(TRADE_SYMBOL.lower())
 RSI_PERIOD = 14
 RSI_OVERBOUGHT = 70
 RSI_OVERSOLD = 30
-#RSI_OVERBOUGHT = 71
-#RSI_OVERSOLD = 70
 TRADE_QUANTITY = 1.
 testing_mode = True
 closes = np.array([])
@@ -107,7 +105,7 @@ def place_order(side, quantity, symbols, type, rcvWindow=5000, timeInForce='GTC'
     #example: selling one LTC for BTC at market price
     #params = {
     #    'symbol': 'LTCBTC',
-    #    'recvWindow': 50000,  # zeitfenster für den Order. default is 5000, max is 60000 (=1min)
+    #    'recvWindow': 50000,
     #    'side': 'SELL',
     #    'type': 'MARKET',
     #    'timestamp': int(time.time() * 1000),
@@ -120,7 +118,7 @@ def place_order(side, quantity, symbols, type, rcvWindow=5000, timeInForce='GTC'
         'quantity': quantity,
         'symbol': symbols,
         'type': type,
-        'recvWindow': rcvWindow,  # zeitfenster für den Order. default is 5000, max is 60000 (=1min)
+        'recvWindow': rcvWindow,  # time window for the order. default is 5000, max is 60000 (=1min)
         #'timeInForce': timeInForce,
         'timestamp': int(time.time() * 1000),
     }
