@@ -1,0 +1,5 @@
+#ignore file that contains binance (testnet) API key and secret
+testnet_key.py
+
+#ignore file that contains actual binance API key and secret
+config.py
